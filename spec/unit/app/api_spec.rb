@@ -19,12 +19,12 @@ module ExpenseTracker
           expense = { 'some' => 'data' }
 
           allow(ledger).to receive(:record)
-          .with(expense)
-          .and_return(RecordResult.new(true, 417, nil))
+            .with(expense)
+            .and_return(RecordResult.new(true, 417, nil))
 
           post '/expenses', JSON.generate(expense)
 
-          parsed =JSON.parse(last_response.body)
+          parsed = JSON.parse(last_response.body)
           expect(parsed).to include('expense_id' => 417)
         end
 

@@ -2,8 +2,6 @@ require_relative '../../app/api'
 require 'rack/test'
 
 module ExpenseTracker
-  RecordResult = Struct.new(:success?, :expense_id, :error_message)
-
   RSpec.describe API do
     include Rack::Test::Methods
 
@@ -55,6 +53,19 @@ module ExpenseTracker
         it 'responds with a 422 (Unprocessable entity)' do
           post '/expenses', JSON.generate(expense)
           expect(last_response.status).to eq(422)
+        end
+
+        describe 'GET /expense/:date' do
+          context 'when expenses exit on the given date' do
+            it 'returns the expense records as JSON'
+            it 'responds with a 200 (OK)'
+          end
+
+          context 'when there are no expenses on the given date' do
+            it 'returns an empty array as JSON'
+            it 'responds with a 200 (OK)'
+          end
+
         end
       end
     end

@@ -22,7 +22,7 @@ def initialize(ledger: Ledger.new)
   super()
 end
 
-# Spedocode for what happens inside the API class:
+# Psedocode for what happens inside the API class:
 #
 result = @ledger.record('some' => 'data')
 result.success?      # => Boolean
